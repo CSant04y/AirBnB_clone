@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """[This is the Class Base Model]
 """
-from models import storage
+
+import models import storage
 import uuid
 import datetime
 
@@ -36,7 +37,9 @@ class BaseModel:
     def to_dict(self):
         """[summary]
         """
-        return {"id": self.id, "created_at": self.created_at.isoformat(), "updated_at": self.updated_at.isoformat(), "__class__": type(self).__name__}
+        return {"id": self.id, "created_at": self.created_at.isoformat(),
+                "updated_at": self.updated_at.isoformat(),
+                "__class__": type(self).__name__}
 
     def save(self):
         """[summary]
