@@ -14,6 +14,7 @@ class BaseModel:
         """
         from models import storage
         if kwargs is not None and kwargs != {}:
+            print("working")
             for key in kwargs:
                 if key != "__class__":
                     if key == "created_at" or key == "updated_at":
@@ -21,6 +22,7 @@ class BaseModel:
                     else:
                         self.__dict__[key] = kwargs[key]
         else:
+            print("brand new")
             self.id = str(uuid.uuid4())
             self.created_at = datetime.datetime.now()
             self.updated_at = datetime.datetime.now()
@@ -37,9 +39,11 @@ class BaseModel:
     def to_dict(self):
         """[summary]
         """
-        return {"id": self.id, "created_at": self.created_at.isoformat(),
-                "updated_at": self.updated_at.isoformat(),
-                "__class__": type(self).__name__}
+        temp_dict = self.__dict__
+        temp_dict["created_at"] = self.created_at.isoformat()
+        temp_dict["updated_at"] = self.updated_at.isoformat()
+        temp_dict["__class__"] = type(self).__name__
+        return temp_dict
 
     def save(self):
         """[summary]

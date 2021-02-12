@@ -41,17 +41,12 @@ class FileStorage:
     def reload(self):
         """[deserializes the JSON file to __objects]
         """
-        from models import storage
         dict_grayson = {}
         dict_of_classes = {"BaseModel": BaseModel}
         if os.path.isfile(self.__file_path):
             with open(self.__file_path, "r") as FILE:
                 dict_grayson = json.loads(FILE.read())
-                print("This is dict_grayson = {}".format(dict_grayson))
-
                 for entry in dict_grayson:
                     obj  = dict_grayson[entry]
-                    print("This is __class__ {}".format(obj["__class__"]))
                     obj_cls = dict_of_classes[obj["__class__"]]
-                    print("__class___ is now {}".format(obj["__class__"]))
-                    storage.new(obj)
+                    self.__objects[entry] = obj_cls(**obj)
