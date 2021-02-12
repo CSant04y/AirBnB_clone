@@ -2,7 +2,6 @@
 """[This is the Class Base Model]
 """
 
-import models import storage
 import uuid
 import datetime
 
@@ -13,6 +12,7 @@ class BaseModel:
     def __init__(self, *args, **kwargs):
         """[This instatiates the public instance attributes]
         """
+        from models import storage
         if kwargs is not None and kwargs != {}:
             for key in kwargs:
                 if key != "__class__":
@@ -44,5 +44,6 @@ class BaseModel:
     def save(self):
         """[summary]
         """
+        from models import storage
         self.updated_at = datetime.datetime.now()
         storage.save()
