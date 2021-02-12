@@ -22,7 +22,6 @@ class BaseModel:
                     else:
                         self.__dict__[key] = kwargs[key]
         else:
-            print("brand new")
             self.id = str(uuid.uuid4())
             self.created_at = datetime.datetime.now()
             self.updated_at = datetime.datetime.now()
@@ -39,9 +38,10 @@ class BaseModel:
     def to_dict(self):
         """[summary]
         """
-        temp_dict = self.__dict__
-        temp_dict["created_at"] = self.created_at.isoformat()
-        temp_dict["updated_at"] = self.updated_at.isoformat()
+        temp_dict = self.__dict__.copy()
+        temp_dict["created_at"] = temp_dict["created_at"].isoformat()
+        temp_dict["updated_at"] = temp_dict["updated_at"].isoformat()
+        print(self.__dict__)
         temp_dict["__class__"] = type(self).__name__
         return temp_dict
 
