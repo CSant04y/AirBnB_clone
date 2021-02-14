@@ -163,17 +163,29 @@ class HBNBCommand(cmd.Cmd):
                 print("** attribute name missing **")
                 return
 
-            elif len(args) < 4:
+            elif len(args) < 4 or not args[3].startswith('"'):
                 print("** value missing **")
                 return
 
             else:
+                str_concat = args[3]
+                for i in range(4, len(args)):
+                    str_concat += " " + args[i]
+
+                    if args[i].endswith('"'):
+                        break
+                if not str_concat.endswith('"'):
+                    print("** value missing **")
+                    return
+
+                str_concat = str_concat.split('"')
+
                 obj = attr_objs[key]
                 if args[2] in obj.__dict__:
                     val_type = type(getattr(obj, args[2]))
-                    setattr(obj, args[2], val_type(args[3]))
+                    setattr(obj, args[2], val_type(str_concat[1]))
                 else:
-                    setattr(obj, args[2], args[3])
+                    setattr(obj, args[2], str_concat[1])
                 obj.updated_at = datetime.datetime.now()
                 storage.save()
                 return
