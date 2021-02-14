@@ -42,7 +42,9 @@ class HBNBCommand(cmd.Cmd):
 
         cls = dict_of_classes[args[0]]
         """insert loop to go through key, value pair to put in a dictonary"""
-        cls.__init__
+        obj = cls()
+        print(obj.id)
+        storage.save()
 
     def do_show(self, line):
         """[show command prints the str representaiton of an object]
@@ -66,9 +68,10 @@ class HBNBCommand(cmd.Cmd):
         attr_objs = storage.objects
 
         if key in attr_objs:
-            obj = attr_objs[key]
-            print(obj)
-
+            class_id = key.split(".")
+            print("[{}] ({}) {}".format(class_id[0],
+                                        class_id[1],
+                                        attr_objs[key].__dict__))
         else:
             print("** no instance found **")
 
@@ -94,8 +97,8 @@ class HBNBCommand(cmd.Cmd):
             attr_objs = storage.objects
 
             if key in attr_objs:
-                taco = attr_objs[key]
-                del taco
+                taco = attr_objs.pop(key)
+                storage.save()
 
             else:
                 print("** no instance found **")
@@ -111,7 +114,7 @@ class HBNBCommand(cmd.Cmd):
             for key in attr_objs:
                 class_id = key.split(".")
                 list_return.append("[{}] ({}) {}".format(class_id[0],
-                class_id[1], attr_objs.__dict__))
+                                        class_id[1], attr_objs[key].__dict__))
 
             print(list_return)
             return
@@ -126,7 +129,7 @@ class HBNBCommand(cmd.Cmd):
             class_id = key.split(".")
             if class_id[0] == args[0]:
                 list_return.append("[{}] ({}) {}".format(class_id[0],
-                class_id[1], attr_objs.__dict__))
+                class_id[1], attr_objs[key].__dict__))
 
         print(list_return)
 
@@ -161,8 +164,11 @@ class HBNBCommand(cmd.Cmd):
 
             else:
                 obj = attr_objs[key]
-                val_type = type(obj.args[2])
-                obj.args[2] = val_type(args[3])
+                if args[2] in obj.__dict__:
+                    val_type = type(getattr(obj, args[2]))
+                    setattr(obj, args[2], val_type(args[3]))
+                else:
+                    setattr(obj, args[2], args[3])
                 obj.updated_at = datetime.datetime.now()
                 storage.save()
                 return

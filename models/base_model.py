@@ -14,7 +14,6 @@ class BaseModel:
         """
         from models import storage
         if kwargs is not None and kwargs != {}:
-            print("working")
             for key in kwargs:
                 if key != "__class__":
                     if key == "created_at" or key == "updated_at":
@@ -41,7 +40,6 @@ class BaseModel:
         temp_dict = self.__dict__.copy()
         temp_dict["created_at"] = temp_dict["created_at"].isoformat()
         temp_dict["updated_at"] = temp_dict["updated_at"].isoformat()
-        print(self.__dict__)
         temp_dict["__class__"] = type(self).__name__
         return temp_dict
 
