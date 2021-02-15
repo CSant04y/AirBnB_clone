@@ -10,8 +10,7 @@ from models.city import City
 from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
-import json
-import os.path
+import json, os.path
 
 class FileStorage:
     """[This serializes instances to a JSON file
@@ -63,3 +62,15 @@ class FileStorage:
         """[Getter for __objects to avoid name mangling]
         """
         return self.__objects
+
+    @property
+    def file_path(self):
+        """[getter for File path]
+        """
+        pass
+
+    @file_path.setter
+    def file_path(self, file):
+        """[File Path setter]
+        """
+        self.__file_path = file

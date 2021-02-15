@@ -27,15 +27,12 @@ class BaseModel:
             storage.new(self)
 
     def __str__(self):
-        """[This id the string representation]
-
-        Returns:
-            [type]: [description]
+        """[This id the string representation of [Class] (id) dictonary]
         """
         return "[{}] ({}) {}".format(type(self), self.id, str(self.__dict__))
 
     def to_dict(self):
-        """[summary]
+        """[]
         """
         temp_dict = self.__dict__.copy()
         temp_dict["created_at"] = temp_dict["created_at"].isoformat()

@@ -169,11 +169,12 @@ class HBNBCommand(cmd.Cmd):
 
             else:
                 str_concat = args[3]
-                for i in range(4, len(args)):
-                    str_concat += " " + args[i]
+                if not args[3].endswith('"')
+                    for i in range(4, len(args)):
+                        str_concat += " " + args[i]
 
-                    if args[i].endswith('"'):
-                        break
+                        if args[i].endswith('"'):
+                            break
                 if not str_concat.endswith('"'):
                     print("** value missing **")
                     return
