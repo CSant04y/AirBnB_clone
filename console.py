@@ -12,6 +12,7 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
+
 class HBNBCommand(cmd.Cmd):
     """[This is the console that handles commands]
 
@@ -119,7 +120,7 @@ class HBNBCommand(cmd.Cmd):
             for key in attr_objs:
                 class_id = key.split(".")
                 list_return.append("[{}] ({}) {}".format(class_id[0],
-                                        class_id[1], attr_objs[key].__dict__))
+                                   class_id[1], attr_objs[key].__dict__))
 
             print(list_return)
             return
@@ -134,7 +135,7 @@ class HBNBCommand(cmd.Cmd):
             class_id = key.split(".")
             if class_id[0] == args[0]:
                 list_return.append("[{}] ({}) {}".format(class_id[0],
-                class_id[1], attr_objs[key].__dict__))
+                                   class_id[1], attr_objs[key].__dict__))
 
         print(list_return)
 
@@ -169,7 +170,7 @@ class HBNBCommand(cmd.Cmd):
 
             else:
                 str_concat = args[3]
-                if not args[3].endswith('"')
+                if not args[3].endswith('"'):
                     for i in range(4, len(args)):
                         str_concat += " " + args[i]
 

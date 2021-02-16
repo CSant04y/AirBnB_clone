@@ -10,7 +10,9 @@ from models.city import City
 from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
-import json, os.path
+import json
+import os.path
+
 
 class FileStorage:
     """[This serializes instances to a JSON file
@@ -53,7 +55,7 @@ class FileStorage:
             with open(self.__file_path, "r") as FILE:
                 dict_grayson = json.loads(FILE.read())
                 for entry in dict_grayson:
-                    obj  = dict_grayson[entry]
+                    obj = dict_grayson[entry]
                     obj_cls = dict_of_classes[obj["__class__"]]
                     self.__objects[entry] = obj_cls(**obj)
 
@@ -63,14 +65,21 @@ class FileStorage:
         """
         return self.__objects
 
+    @objects.setter
+    def objects(self, new_dict):
+        """[Setter for __objects so we can do unittests]
+        """
+        self.__objects = new_dict
+
     @property
     def file_path(self):
         """[getter for File path]
         """
-        pass
+        return(self.__file_path)
 
     @file_path.setter
     def file_path(self, file):
         """[File Path setter]
         """
         self.__file_path = file
+        
