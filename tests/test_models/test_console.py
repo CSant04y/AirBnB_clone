@@ -2,7 +2,10 @@
 """Module containing unittests for base_model.py """
 
 
-import unittest, json, os, sys
+import unittest
+import json
+import os
+import sys
 from unittest.mock import patch
 from io import StringIO
 import models.engine.file_storage as file_storage
@@ -15,19 +18,16 @@ from models.place import Place
 from models.review import Review
 from models import storage
 
+
 class TestBaseModel(unittest.TestCase):
     """class to test the Base_Model class and its methods"""
 
     def tearDownModule():
         'Might have to delete file'
 
-
     def test_all(self):
         """Tests for the all method of Base_Model"""
         self.assertEquals()
-
-
-
 
     def test_new(self):
         """Tests for the new method of Base_Model"""
@@ -41,4 +41,3 @@ class TestBaseModel(unittest.TestCase):
     def setUpModule():
         """[This sets up a fake json string and dict]
         """
-        

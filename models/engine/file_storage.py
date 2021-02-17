@@ -82,4 +82,3 @@ class FileStorage:
         """[File Path setter]
         """
         self.__file_path = file
-        
