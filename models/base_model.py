@@ -48,7 +48,7 @@ class BaseModel:
         """
         from models import storage
         self.updated_at = datetime.datetime.now()
-        storage.save(self)
+        storage.save()
 
     @property
     def objects(self):
