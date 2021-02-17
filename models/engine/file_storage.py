@@ -58,27 +58,3 @@ class FileStorage:
                     obj = dict_grayson[entry]
                     obj_cls = dict_of_classes[obj["__class__"]]
                     self.__objects[entry] = obj_cls(**obj)
-
-    @property
-    def objects(self):
-        """[Getter for __objects to avoid name mangling]
-        """
-        return self.__objects
-
-    @objects.setter
-    def objects(self, new_dict):
-        """[Setter for __objects so we can do unittests]
-        """
-        self.__objects = new_dict
-
-    @property
-    def file_path(self):
-        """[getter for File path]
-        """
-        return(self.__file_path)
-
-    @file_path.setter
-    def file_path(self, file):
-        """[File Path setter]
-        """
-        self.__file_path = file
