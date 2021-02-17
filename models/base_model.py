@@ -70,6 +70,6 @@ class BaseModel:
 
     @file_path.setter
     def file_path(self, file):
-        """[File Path setter]
+        """[File Path setter idk]
         """
         self.__file_path = file
