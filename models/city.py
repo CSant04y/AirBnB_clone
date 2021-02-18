@@ -8,7 +8,6 @@ class City(BaseModel):
     """Class that defines a City object"""
 
     def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self.name = ""
         self.state_id = ""
-        super().__init__(*args, **kwargs)
-

@@ -8,7 +8,7 @@ class Review(BaseModel):
     """Class that defines a Review object"""
 
     def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self.place_id = ""
         self.user_id = ""
         self.text = ""
-        super().__init__(*args, **kwargs)
