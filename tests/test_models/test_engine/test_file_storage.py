@@ -75,7 +75,6 @@ bf654f25-d81f-4d02-a3c0-1777c5bfeda5"]
     def test_reload(self):
         """This is a Unittest for the method reload"""
         self.UrchinB["Rubber_duck"] = "holbie"
-        self.assertTrue(hasattr(self.UrchinB, "Rubber_duck")
+        self.assertTrue(hasattr(self.UrchinB, "Rubber_duck"))
         self.otter.reload()
-        self.assertFalse(hasattr(self.UrchinB, "Rubber_duck")
-
+        self.assertFalse(hasattr(self.UrchinB, "Rubber_duck"))
