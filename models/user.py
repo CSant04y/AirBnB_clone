@@ -12,11 +12,9 @@ class User(BaseModel):
     Args:
         BaseModel ([Super class]): [The base class]
     """
-
-    self.email = ""
-    self.password = ""
-    self.first_name = ""
-    self.last_name = ""
-
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.email = ""
+        self.password = ""
+        self.first_name = ""
+        self.last_name = ""
