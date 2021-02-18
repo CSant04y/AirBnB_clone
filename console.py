@@ -35,7 +35,7 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_create(self, line):
-        """Create command makes new instance of class and prints uuid"""
+        """[Create command makes new instance of class and prints uuid]"""
         if not line or line is None:
             print("** class name missing **")
             return
@@ -82,7 +82,7 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
 
     def do_destroy(self, line):
-            """[destroy command to delete an object]
+            """[Destroy command to delete an object]
             """
             if not line or line is None:
                 print("** class name missing **")
@@ -110,10 +110,9 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_all(self, line):
-        """[all command to print all instances of a class or all instances]
+        """[All command to print all instances of a class or all instances]
         """
         list_return = []
-
         attr_objs = storage.objects
 
         if not line or line is None:
@@ -140,7 +139,7 @@ class HBNBCommand(cmd.Cmd):
         print(list_return)
 
     def do_update(self, line):
-        """[update command based off class name and id]
+        """[Update command based off class name and id]
         """
         if not line or line is None:
             print("** class name missing **")
@@ -194,6 +193,53 @@ class HBNBCommand(cmd.Cmd):
 
         print("** no instance found **")
 
+        def count(self, cls_cmd):
+            """This gets the count of instances of a class"""
+            count = 0
+            attr_objs = storage.objects
+
+            for key in attrs_objs:
+                class_id = key.split(".")
+                if class_id[0] == cls_cmd:
+                    count += 1
+            print(count)
+
+        def default(self, line):
+            """This is the Defualt if the command if not found"""
+            class_parsed = line.split('.')
+            print(class_parsed)
+            if class_parsed[0] in dict_of_classes:
+                cmd_mod = class_parsed[1].split('(')
+                print(cmd_mod)
+                cmd_args = cmd_mod[1].split(')')
+
+                if cmd_mod[0] is "count":
+                    self.count(class_parsed[0])
+
+                elif cmd_mod[0] is "all":
+                    self.do_all(class_parsed[0])
+
+                elif cmd_mod[0] is "show":
+                    show_line = class_parsed[0] + " " + cmd_args[0]
+                    self.do_show(show_line)
+
+                elif cmd_mod[0] is "destroy":
+                    destroy_line = class_parsed[0] + " " + cmd_args[0]
+                    self.do_destroy(destroy_line)
+
+                elif cmd_mod[0] is "update":
+                    if False:
+                        pass
+                    elif (cmd_args[0].find(',') and
+                          cmd_args[0].find(',', 38)):
+                        comma_1 = cmd_args[0].find(',')
+                        comma_2 = cmd_args[0].find(',', comma_1 + 1)
+                        update_line = class_parsed[0] + " "
+                        + cmd_args[0][:comma_1]
+                        + cmd_args[0][comma_1 + 1:comma_2]
+                        + cmd_args[0][comma_2 + 1:]
+
+                    self.do_update(update_line)
 
 if __name__ == '__main__':
     prompt = HBNBCommand()
