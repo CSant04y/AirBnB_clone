@@ -4,11 +4,12 @@
 
 import unittest
 import datetime
-
-
 from models.place import Place
 from models import storage
 import os
+
+
+strptime = datetime.datetime.strptime
 
 
 class TestPlace(unittest.TestCase):

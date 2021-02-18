@@ -4,10 +4,12 @@
 
 import unittest
 import datetime
-from datetime.datetime import strptime as strptime
 from models.city import City
 from models import storage
 import os
+
+
+strptime = datetime.datetime.strptime
 
 
 class TestCity(unittest.TestCase):

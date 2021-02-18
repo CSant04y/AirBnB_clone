@@ -27,7 +27,6 @@ class TestBaseModel(unittest.TestCase):
 
     def test_all(self):
         """Tests for the all method of Base_Model"""
-        self.assertEquals()
 
     def test_new(self):
         """Tests for the new method of Base_Model"""

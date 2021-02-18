@@ -4,10 +4,12 @@
 
 import unittest
 import datetime
-from datetime.datetime import strptime as strptime
 from models.review import Review
 from models import storage
 import os
+
+
+strptime = datetime.datetime.strptime
 
 
 class TestReview(unittest.TestCase):

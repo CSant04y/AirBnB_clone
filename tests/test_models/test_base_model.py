@@ -4,10 +4,12 @@
 
 import unittest
 import datetime
-from datetime.datetime import strptime as strptime
 from models.base_model import BaseModel
 from models import storage
 import os
+
+
+strptime = datetime.datetime.strptime
 
 
 class TestBaseModel(unittest.TestCase):
@@ -51,9 +53,8 @@ class TestBaseModel(unittest.TestCase):
         """[This is the Unittest for __str__ method]
         """
         test_str = self.obj.__str__()
-        self.assertEqual(test_str[:52],
-                         "[BaseModel] \
-                         (7152df91-ec26-4595-bf75-fd84f02a3bd9) {")
+        self.assertEqual(test_str[:52], "[BaseModel] \
+(7152df91-ec26-4595-bf75-fd84f02a3bd9) {")
         self.assertEqual(test_str[-1:], '}')
 
     def test_to_dict(self):
