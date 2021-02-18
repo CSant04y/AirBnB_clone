@@ -52,13 +52,14 @@ class FileStorage:
         dict_grayson = {}
 
         if os.path.isfile(self.__file_path):
+            self.__objects = {}
             with open(self.__file_path, "r") as FILE:
                 dict_grayson = json.loads(FILE.read())
                 for entry in dict_grayson:
                     obj = dict_grayson[entry]
                     obj_cls = dict_of_classes[obj["__class__"]]
                     self.__objects[entry] = obj_cls(**obj)
-                    
+
     @property
     def objects(self):
         """[Getter for __objects to avoid name mangling]

@@ -31,7 +31,6 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(self.obj.updated_at,
                          strptime(self.test_dict["updated_at"],
                                   '%Y-%m-%dT%H:%M:%S.%f'))
-        self.assertEqual(self.obj.created_at, self.obj.updated_at)
         self.assertIsInstance(self.obj.created_at, datetime.datetime)
         self.assertIsInstance(self.obj.updated_at, datetime.datetime)
         self.assertIsInstance(self.obj.id, str)
