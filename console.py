@@ -3,6 +3,7 @@
 """
 import datetime
 import cmd
+import ast
 from models import dict_of_classes, storage
 from models.base_model import BaseModel
 from models.user import User
@@ -49,9 +50,21 @@ class HBNBCommand(cmd.Cmd):
                 self.do_destroy(destroy_line)
 
             elif cmd_mod[0] == "update":
-                if False:
-                    pass
-                elif (cmd_args[0].find(',') and
+                if ((cmd_args[0].find(',') != -1 and
+                      cmd_args[0][40] == '{') and cmd_args[0][-1] == ('}')):
+                    update_line = class_parsed[0] + " "
+                    update_line += cmd_args[0][1:37] + " "
+                    dict_trupin = ast.literal_eval(cmd_args[0][40:])
+                    for key in dict_trupin:
+                        update_line_again = update_line
+                        update_line_again += key  + " "
+                        if isinstance(dict_trupin[key], int):
+                            update_line_again += '"' + str(dict_trupin[key]) + '"'
+                        else:
+                            update_line_again += '"' + dict_trupin[key] + '"'
+                        self.do_update(update_line_again)
+
+                elif (cmd_args[0].find(',') != -1 and
                       cmd_args[0].find(',', 40)):
                     comma_1 = cmd_args[0].find(',')
                     comma_2 = cmd_args[0].find(',', comma_1 + 1)
@@ -64,7 +77,7 @@ class HBNBCommand(cmd.Cmd):
                         update_line += update_value
                     else:
                         update_line += ' "' + update_value[1:] + '"'
-                self.do_update(update_line)
+                    self.do_update(update_line)
 
             else:
                 print("*** Unknown syntax: {}".format(line))
