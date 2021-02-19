@@ -71,10 +71,3 @@ bf654f25-d81f-4d02-a3c0-1777c5bfeda5"]
         self.assertDictEqual(test_save_dict, test_file_dict)
         os.remove("test_save.json")
         self.otter.file_path = "test_file.json"
-
-    def test_reload(self):
-        """This is a Unittest for the method reload"""
-        self.UrchinB["Rubber_duck"] = "holbie"
-        self.assertTrue(hasattr(self.UrchinB, "Rubber_duck"))
-        self.otter.reload()
-        self.assertFalse(hasattr(self.UrchinB, "Rubber_duck"))
