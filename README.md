@@ -47,7 +47,7 @@ EOF  all  create  destroy  help  quit  show  update
 | `EOF`   | `EOF` | This command Exits the console     |
 
 ### Ex. of commands
-'''
+```
 $ ./console.py 
 (hbnb) all
 []
@@ -75,7 +75,7 @@ f3a6929c-a046-4ae9-90e2-c5d8bde86e86
 'created_at': datetime.datetime(2021, 2, 19, 19, 54, 56, 964160)}
 (hbnb) quit
 $
-''' 
+``` 
 
 ## Contributers
 
