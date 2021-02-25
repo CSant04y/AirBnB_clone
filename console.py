@@ -55,8 +55,8 @@ class HBNBCommand(cmd.Cmd):
                     update_line = class_parsed[0] + " "
                     update_line += cmd_args[0][1:37] + " "
                     dict_trupin = ast.literal_eval(cmd_args[0][40:])
+                    update_line_again = update_line                    
                     for key in dict_trupin:
-                        update_line_again = update_line
                         update_line_again += key  + " "
                         if isinstance(dict_trupin[key], int):
                             update_line_again += '"' + str(dict_trupin[key]) + '"'
