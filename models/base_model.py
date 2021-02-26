@@ -35,7 +35,7 @@ class BaseModel:
                                      str(self.__dict__))
 
     def to_dict(self):
-        """[]
+        """[This Converts our dict into a dictonary that is able to be used by json]
         """
         temp_dict = self.__dict__.copy()
         temp_dict["created_at"] = temp_dict["created_at"].isoformat()
@@ -44,7 +44,7 @@ class BaseModel:
         return temp_dict
 
     def save(self):
-        """[summary]
+        """[This updates and adds new information as well as updating the updated_at]
         """
         from models import storage
         self.updated_at = datetime.datetime.now()
