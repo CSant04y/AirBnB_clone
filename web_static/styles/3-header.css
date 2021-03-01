@@ -8,7 +8,9 @@ header {
     
 }
 .logo {
-    background-image: url("/web_static/images/logo.png");
-    width: 142px;
+    background-image: url("/images/logo.png");
+    width: 160px;
     height: 60px;
+    background-repeat: no-repeat;
+    background-position: 20px;
 }
